@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>menu</title>
+</head>
+
+<body>
+    <script>
+    function Container() {
+        this.id = '';
+        this.className = '';
+        this.htmlCode = '';
+    }
+
+    Container.prototype.remove = function() {
+        var menuElem = document.getElementById(this.id);
+        menuElem.parentNode.removeChild(menuElem);
+    }
+
+
+    Container.prototype.render = function() {
+        return this.htmlCode;
+    }
+
+    function Menu(myId, myClass, myItems) {
+        Container.call(this);
+        this.id = myId;
+        this.className = myClass;
+        this.items = myItems;
+    }
+
+    Menu.prototype = Object.create(Container.prototype);
+    Menu.prototype.constructor = Menu;
+
+    Menu.prototype.render = function() {
+        var result = '<ul class=""' + this.className + ' "id="' + this.id + '">';
+        for (var item in this.items) {
+            if (this.items[item] instanceof MenuItem) {
+                result += this.items[item].render();
+            }
+        }
+        result += '</ul>';
+        return result;
+    }
+
+    function MenuItem(myHref, myName, myItems) {
+        Menu.call(this);
+        this.className = 'menu-item';
+        this.href = myHref;
+        this.name = myName;
+        this.items = myItems;
+    }
+
+    MenuItem.prototype = Object.create(Menu.prototype);
+    MenuItem.prototype.constructor = MenuItem;
+
+    MenuItem.prototype.render = function() {
+        return '<li class=""' + this.className + '"><a href="' + this.href + '">' + this.name + '</a></li>';
+    }
+
+    var menuItem1 = new MenuItem('/', 'Homepage');
+    var menuItem2 = new MenuItem('/Blog', 'Blog');
+    var menu = new Menu('myId', 'myClass', { 0: menuItem1, 1: menuItem2 });
+
+    var div = document.write(menu.render());
+
+    
+    </script>
+</body>
+
+</html>
