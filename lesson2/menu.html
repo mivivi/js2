@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>menu</title>
+</head>
+
+<body>
+<script>
+    // Конструктор Container
+    function Container() {
+        this.id = '';
+        this.className = '';
+        this.htmlCode = '';
+    }
+
+    Container.prototype.remove = function () {
+        var menuElem = document.getElementById(this.id);
+
+        if (menuElem !== null) {
+            menuElem.parentNode.removeChild(menuElem);
+        }
+    }
+
+
+    Container.prototype.render = function () {
+        return this.htmlCode;
+    }
+
+
+    // Конструктор Menu
+    function Menu(myId, myClass, myItems) {
+        Container.call(this);
+        this.id = myId;
+        this.className = myClass;
+        this.items = myItems;
+    }
+
+    Menu.prototype = Object.create(Container.prototype);
+    Menu.prototype.constructor = Menu;
+
+    Menu.prototype.render = function () {
+        var result = '<ul class=""' + this.className + ' "id="' + this.id + '">';
+        for (var item in this.items) {
+            if (this.items[item] instanceof MenuItem) {
+                result += this.items[item].render();
+            }
+        }
+        result += '</ul>';
+        return result;
+    }
+
+    // Класс элемента меню
+    function MenuItem(myHref, myName, mySubMenu) {
+        Container.call(this);
+        this.className = 'menu-item';
+        this.href = myHref;
+        this.name = myName;
+        this.subMenu = mySubMenu;
+    }
+
+    function createMenuFromJsonObject(object) {
+        var myItems = [];
+        var i = 0;
+        for (var property in object.items) {
+            myItems[i] = new MenuItem(object.items[property].href, object.items[property].name, createMenuFromJsonObject(object.items[property].subMenu));
+            i++;
+        }
+        var menu = new Menu(object.id, object.className, myItems);
+        return menu;
+    }
+
+    MenuItem.prototype = Object.create(Container.prototype);
+    MenuItem.prototype.constructor = MenuItem;
+
+    MenuItem.prototype.render = function () {
+        var result = '<li class=""' + this.className + '"><a href="' + this.href + '">' + this.name + '</a>';
+        result += this.subMenu.render();
+        result += '</li>';
+        return result;
+    }
+
+    var xhr = new XMLHttpRequest();
+    var url = "http://jsonlesson20170806.000webhostapp.com/menu.json";
+    var jsonObject = null;
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            jsonObject = JSON.parse(this.responseText);
+            if (jsonObject != null) {
+                var menu = createMenuFromJsonObject(jsonObject);
+                var div = document.write(menu.render());
+            }
+        }
+    }
+    xhr.open("GET", url, true);
+    xhr.send();
+</script>
+</body>
+
+</html>
