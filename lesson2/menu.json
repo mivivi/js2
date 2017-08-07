@@ -1,0 +1,74 @@
+{
+  "id": "myId",
+  "className": "myClass",
+  "htmlCode": "",
+  "items": {
+    "0": {
+      "id": "",
+      "className": "menu-item",
+      "htmlCode": "",
+      "href": "/",
+      "name": "Homepage",
+      "subMenu": {
+        "id": "subMenuId1",
+        "className": "subMenuClass",
+        "htmlCode": "",
+        "items": {
+          "0": {
+            "id": "",
+            "className": "menu-item",
+            "htmlCode": "",
+            "href": "/",
+            "name": "Subitem1",
+            "subMenu": {
+              "id": "menuId1",
+              "className": "menuClass",
+              "htmlCode": "",
+              "items": null
+            }
+          },
+          "1": {
+            "id": "",
+            "className": "menu-item",
+            "htmlCode": "",
+            "href": "/",
+            "name": "Subitem2",
+            "subMenu": {
+              "id": "menuId2",
+              "className": "menuClass",
+              "htmlCode": "",
+              "items": null
+            }
+          }
+        }
+      }
+    },
+    "1": {
+      "id": "",
+      "className": "menu-item",
+      "htmlCode": "",
+      "href": "/Blog",
+      "name": "Blog",
+      "subMenu": {
+        "id": "subMenuId1",
+        "className": "subMenuClass",
+        "htmlCode": "",
+        "items": {
+          "0": {
+            "id": "",
+            "className": "menu-item",
+            "htmlCode": "",
+            "href": "/",
+            "name": "Subitem1",
+            "subMenu": {
+              "id": "menuId1",
+              "className": "menuClass",
+              "htmlCode": "",
+              "items": null
+            }
+          }
+        }
+      }
+    }
+  }
+}
