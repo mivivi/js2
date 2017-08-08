@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<div id='myMenu'></div>
 <script>
     // Конструктор Container
     function Container() {
@@ -90,7 +91,7 @@
             jsonObject = JSON.parse(this.responseText);
             if (jsonObject != null) {
                 var menu = createMenuFromJsonObject(jsonObject);
-                var div = document.write(menu.render());
+                var div = document.querySelector('#myMenu').innerHTML = menu.render();
             }
         }
     }
