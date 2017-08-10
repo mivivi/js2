@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>adventure time</title>
+</head>
+
+<body>
+<form id="form">
+    <fieldset>
+        <legend>It's an Adventure Time</legend>
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" placeholder="Your name">
+        </p>
+        <p>
+            <label for="phone">Phone number:</label>
+            <input type="text" name="phone" id="phone" placeholder="Your pnone number">
+        </p>
+        <p>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" placeholder="Your email">
+        </p>
+          <p>
+           <input type="text" name="message" id="message" placeholder="Your message">
+        </p>
+        <input type="submit" name="submit" class="submit" value="Teleport">
+
+    </fieldset>
+</form>
+
+
+<script>
+
+
+document.getElementById('form').addEventListener('submit', function (e) {
+
+      
+        var nameText = document.getElementById('name').value;
+        var phoneText = document.getElementById('phone').value;
+        var emailText = document.getElementById('email').value;
+        var messageText = document.getElementById('message').value;
+
+        //var userText = document.getElementById('name').innerHTML;
+       //alert('userText:' + userText);
+       var nameRegExp = new RegExp("^[a-zA-Zа-яА-Я' ]+$");
+        var isNameTextValid = nameRegExp.test(nameText);
+        //выполняем проверки
+        if(!isNameTextValid && nameText != '') {
+            e.preventDefault();
+            alert('Use letters only');
+        }
+        var phoneRegExp = new RegExp("^[0-9]+$");
+        var isPhoneTextValid = phoneRegExp.test(phoneText);
+        //выполняем проверки
+        if(!isPhoneTextValid && phoneText !='') {
+            e.preventDefault();
+            alert('Use numbers only');
+        }
+
+         var emailRegExp = new RegExp("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
+        var isEmailTextValid = emailRegExp.test(emailText);
+        //выполняем проверки
+        if(!isEmailTextValid) {
+            e.preventDefault();
+            alert('Invalid email');
+        }
+
+        if (messageText =="") {
+             e.preventDefault();
+            alert('Write your message');
+
+        }
+
+    });
+
+</script>
+
+
+
+</body>
+
+</html>
