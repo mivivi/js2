@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>adventure time</title>
 </head>
 
@@ -34,7 +35,7 @@
 
 
 document.getElementById('form').addEventListener('submit', function (e) {
-
+e.preventDefault();
       
         var nameText = document.getElementById('name').value;
         var phoneText = document.getElementById('phone').value;
