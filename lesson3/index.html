@@ -16,7 +16,7 @@
         </p>
         <p>
             <label for="phone">Phone number:</label>
-            <input type="text" name="phone" id="phone" placeholder="Your pnone number">
+            <input type="text" name="phone" id="phone" placeholder="+7(777) 777-7777">
         </p>
         <p>
             <label for="email">Email:</label>
@@ -51,12 +51,12 @@ e.preventDefault();
             e.preventDefault();
             alert('Use letters only');
         }
-        var phoneRegExp = new RegExp("^[0-9]+$");
+        var phoneRegExp = /^\+7\(\d{3}\)\d{3}-?\d{4}$/;
         var isPhoneTextValid = phoneRegExp.test(phoneText);
         //выполняем проверки
         if(!isPhoneTextValid && phoneText !='') {
             e.preventDefault();
-            alert('Use numbers only');
+            alert('Use correct phone number');
         }
 
          var emailRegExp = new RegExp("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
