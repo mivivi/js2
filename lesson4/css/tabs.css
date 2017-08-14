@@ -1,0 +1,60 @@
+.tabs {
+    display: inline-block;
+}
+
+.tabs>div {
+    padding-top: 5px;
+}
+
+.tabs ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.tabs ul:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 5px;
+}
+
+.tabs ul li {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    float: left;
+    padding: 10px 15px;
+    background: #92EFE7;
+    color: #121AC2;
+    transition: 1s;
+}
+
+.tabs ul li.active a,
+.tabs ul li.active,
+.tabs ul li:hover a {
+    background: #E03D91;
+    color: #FFFFFF;
+    transform: translateY(20px);
+    transition: 1s;
+}
+
+
+.tabs ul li:hover {
+    background: #E03D91;
+}
+
+.tabs a {
+    text-decoration: none;
+}
+
+
+.tab__content {
+    background: #E03D91;
+}
+
+.tabs_container .tab__content {
+    border: 1px solid #E03D91;
+    width: 500px;
+    color: #FFFFFF;
+    padding-left: 15px;
+}
