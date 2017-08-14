@@ -50,6 +50,7 @@
 
 .tab__content {
     background: #E03D91;
+    transition: 1s;
 }
 
 .tabs_container .tab__content {
