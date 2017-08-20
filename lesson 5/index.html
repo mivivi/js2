@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<div id="basket"></div>
+  <div class="good">
+    <p>Товар</p>
+    <p>Цена: <span class="price">150</span></p>
+    <button class="buy" id="good_123">Купить</button>
+  </div>
+  <script src="js/basket.js"></script>
+  <script>
+    // Создание новой корзины
+    var basket = new Basket();
+    basket.render('#basket');
+
+    // Обработка нажатий на кнопку "Купить"
+    $(document).on('click', '.buy', function(event) {
+      // Получение id товара из атрибута кнопки
+      var id = parseInt($(this).attr('id').split('_')[1]);
+      var quantity = 1;
+      // Получение цены товара
+      var price = parseInt($(this).parent().find('.price').text());
+
+      // Добавление товара в корзину
+      basket.add(id, quantity, price);
+    });
+  </script>
+</body>
+</html>
