@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>adventure time</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <form id="form">
+        <fieldset id="fieldset">
+            <legend>It's an Adventure Time</legend>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Your name">
+            </p>
+            <p>
+                <label for="phone">Phone number:</label>
+                <input type="text" name="phone" id="phone" placeholder="+7(777) 777-7777">
+            </p>
+            <p>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" placeholder="Your email">
+            </p>
+            <p>
+                <input type="text" name="message" id="message" placeholder="Your message">
+            </p>
+            <p>
+                <input type="text" name="datepicker" id="datepicker" placeholder="Date of birth" />
+            </p>
+            <input type="submit" name="submit" class="submit" value="Teleport">
+        </fieldset>
+    </form>
+    <script>
+    document.getElementById('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var nameText = document.getElementById('name').value;
+        var phoneText = document.getElementById('phone').value;
+        var emailText = document.getElementById('email').value;
+        var messageText = document.getElementById('message').value;
+
+
+        //var userText = document.getElementById('name').innerHTML;
+        //alert('userText:' + userText);
+        var nameRegExp = new RegExp("^[A-zА-яЁё]+( [a-zA-Zа-яА-Я']+)*$");
+        var isNameTextValid = nameRegExp.test(nameText);
+        //выполняем проверки
+        if (!isNameTextValid && nameText != '') {
+            e.preventDefault();
+            alert('Use letters only');
+        }
+        var phoneRegExp = /^\+7\(\d{3}\)\d{3}-?\d{4}$/;
+        var isPhoneTextValid = phoneRegExp.test(phoneText);
+        //выполняем проверки
+        if (!isPhoneTextValid && phoneText != '') {
+            e.preventDefault();
+            alert('Use correct phone number');
+        }
+
+        var emailRegExp = new RegExp("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
+        var isEmailTextValid = emailRegExp.test(emailText);
+        //выполняем проверки
+        if (!isEmailTextValid) {
+            e.preventDefault();
+            $("#email").effect("shake");
+            alert('Invalid email');
+        }
+
+        if (messageText == "") {
+            e.preventDefault();
+            $("#message").effect("shake");
+            alert('Write your message');
+        }
+
+    });
+
+    $(function() {
+        $('#datepicker').datepicker({
+            changeYear: true,
+            yearRange: '1900:2010',
+            changeMonth: true,
+            monthNames: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"]
+        });
+
+
+    });
+    </script>
+    <style>
+    #datepicker {
+        float: left;
+    }
+
+    #fieldset {
+        margin: auto;
+        height: 300px;
+        width: 500px;
+    }
+
+    .submit {
+        margin-left: 50px;
+    }
+    </style>
+</body>
+
+</html>
