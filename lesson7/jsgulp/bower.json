@@ -1,0 +1,20 @@
+{
+  "name": "jsgulp",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "mivivi <marce.teapie@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/mivivi/js2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.2.1"
+  }
+}
