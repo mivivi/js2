@@ -37,19 +37,19 @@ var gulp = require('gulp'),
 
 
     gulp.task('html:build', function (){
-        gulp.src('path.src.html')
+        gulp.src(path.src.html)
         .pipe(rigger())
-        .pipe(gulp.dest('path.build.html'))
+        .pipe(gulp.dest(path.build.html))
         .pipe(reload({stream: true}));
         });
 
     gulp.task('js:build', function () {
-    gulp.src('path.src.js') 
+    gulp.src(path.src.js) 
         .pipe(rigger())
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(sourcemaps.write()) 
-        .pipe(gulp.dest('path.build.js')) 
+        .pipe(gulp.dest(path.build.js)) 
         .pipe(reload({stream: true}));
 });
 
